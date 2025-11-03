@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: ai-prod-recsys
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+    restart: always
