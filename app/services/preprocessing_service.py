@@ -46,6 +46,10 @@ class PreprocessingService:
 
     def preprocess(self, df: pd.DataFrame) -> pd.DataFrame:
         """Preprocess input for model prediction: encode → align → scale → PCA"""
+        # Drop ID column - it's not a feature
+        if "ID" in df.columns:
+            df = df.drop("ID", axis=1)
+
         # One-hot encode
         df_encoded = pd.get_dummies(df.copy(), drop_first=True)
 
@@ -55,7 +59,7 @@ class PreprocessingService:
         # Scale
         df_scaled = self.scaler.transform(df_aligned)
 
-        # PCA (convert to numpy to avoid feature name warnings)
+        # PCA
         df_pca = self.pca.transform(df_scaled)
 
         # Return as DataFrame with PC column names

@@ -26,6 +26,9 @@ async def predict(
         prediction = int(prediction_result[0]) if hasattr(prediction_result, "__iter__") else int(prediction_result)
 
         # Format response
+        # Label mapping from training:
+        # Label 1 = Good credit (STATUS 0,C,X) → APPROVED
+        # Label 0 = Bad credit (STATUS 1-5) → REJECTED
         decision = "APPROVED" if prediction == 1 else "REJECTED"
 
         return PredictionOutput(
