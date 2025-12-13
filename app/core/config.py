@@ -24,6 +24,9 @@ class Settings(BaseSettings):
     MODEL_NAME: str = "card_approval_model"
     MODEL_STAGE: str = "Production"
 
+    # Google Cloud (for GCS artifact storage)
+    GOOGLE_APPLICATION_CREDENTIALS: str = ""
+
     # Logging
     LOG_LEVEL: str = "INFO"
     LOG_FILE: str = "logs/app.log"

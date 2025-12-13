@@ -71,7 +71,7 @@ class PredictionOutput(BaseModel):
     probability: float = Field(..., ge=0, le=1, description="Approval probability")
     decision: str = Field(..., description="APPROVED or REJECTED")
     confidence: float = Field(..., ge=0, le=1, description="Prediction confidence")
-    model_version: Optional[str] = Field(None, description="Model version used")
+    version: Optional[str] = Field(None, description="Model version used")
     timestamp: datetime = Field(default_factory=datetime.utcnow)
 
     class Config:
@@ -81,7 +81,7 @@ class PredictionOutput(BaseModel):
                 "probability": 0.85,
                 "decision": "APPROVED",
                 "confidence": 0.85,
-                "model_version": "1",
+                "version": "1",
                 "timestamp": "2025-12-13T11:30:00",
             }
         }

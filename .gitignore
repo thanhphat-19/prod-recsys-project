@@ -219,20 +219,32 @@ terraform.tfvars
 *.tfvars
 !terraform.tfvars.example
 
-# Service account keys
-*.json
+# Service account keys (be specific, not all json files)
+gcp-key.json
+*-key.json
+credentials.json
 
 # Backup files
 *.backup
 *~
 
+# document
+docs/
+
 # Crash logs
 crash.log
-docs
 
+# Project-specific artifacts
+mlruns/
+cap_model/data/raw/
+cap_model/models/*.pkl
+cap_model/models/*.json
+cap_model/outputs/
+catboost_info/
+*.csv.gz
 
-mlruns
-data
-models
-outputs
-catboost_info
+# Keep these json files
+!pyproject.json
+!package.json
+!tsconfig.json
+!cap_model/data/processed/feature_names.json

@@ -240,7 +240,11 @@ class ModelTrainer:
         logger.info("\nPerformance Metrics:")
         for key, value in metrics.items():
             if pd.notna(value):
-                logger.info(f"  {key}: {value:.4f}")
+                # Format as float if numeric, otherwise as string
+                if isinstance(value, (int, float)):
+                    logger.info(f"  {key}: {value:.4f}")
+                else:
+                    logger.info(f"  {key}: {value}")
 
         return best_model_name, best_model, metrics
 
